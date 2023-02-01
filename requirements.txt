@@ -1,0 +1,12 @@
+numpy # put your required Python3 packages here. They will be installed using Pip!
+jupyterlab
+scikit-image
+scikit-learn
+mazelib
+matplotlib
+Pillow
+opencv-python
+seaborn
+# visualisation stuff
+jupyter_dashboards
+jupyterlab-spellchecker
