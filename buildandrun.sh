@@ -9,21 +9,9 @@ DOCKER_RUN_ARGS="${DOCKER_RUN_ARGS:-"-p 8888:8888"}"
 # check if src folder exists, if not it will be created
 mkdir -p src
 
-# Get turtlebot packages or check for updates if the repo is already cloned
-#cd src
-#git clone https://github.com/ROBOTIS-GIT/turtlebot3 || git pull
-#git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations || git pull
-#cd ..
-
 # check if requirements file exists and create it with example packages if it isn't
 if [ ! -f  "requirements.txt" ]; then
     echo "numpy # put your required Python3 packages here. They will be installed using Pip!" > requirements.txt
-fi
-
-# if amdpro driver is used, download it if it is not already present
-AMDPROFILE="amdgpu-pro-21.20-1271047-ubuntu-20.04.tar.xz"
-if [ "$GRAPHICS_PLATFORM" == "amdpro" ] && [ ! -f "$AMDPROFILE" ]; then
-    wget --referer=http://support.amd.com  https://drivers.amd.com/drivers/linux/amdgpu-pro-21.20-1271047-ubuntu-20.04.tar.xz
 fi
 
 # build container
@@ -46,14 +34,14 @@ if [ "$GRAPHICS_PLATFORM" == "nvidia" ]; then
     docker run -it \
                 --gpus all \
                 --privileged \
-                --network host \
                 --rm \
                 --name ros_ml_container \
                 -e DISPLAY=$DISPLAY \
                 -v /tmp/.X11-unix:/tmp/.X11-unix \
+                -v "$PWD/src":/catkin_ws/src \
                 -v "$PWD/app":/app \
                 $DOCKER_RUN_ARGS \
-                ros_ml_container:latest bash
+                ros_ml_container:latest /bin/bash -c "chmod +x /app/app.sh && (cd app ; ./app.sh)"
 elif [ "$GRAPHICS_PLATFORM" == "cpu" ]; then
     # CPU
     # run normally, without passing through any devices
@@ -62,9 +50,10 @@ elif [ "$GRAPHICS_PLATFORM" == "cpu" ]; then
                 --name ros_ml_container \
                 -e DISPLAY=$DISPLAY \
                 -v /tmp/.X11-unix:/tmp/.X11-unix \
+                -v "$PWD/src":/catkin_ws/src \
                 -v "$PWD/app":/app \
                 $DOCKER_RUN_ARGS \
-                ros_ml_container:latest bash
+                ros_ml_container:latest /bin/bash -c "chmod +x /app/app.sh && (cd app ; ./app.sh)"
 elif [ "$GRAPHICS_PLATFORM" == "amdpro" ]; then
     # AMDPRO
     # run container in normal mode but pass through dri and kfd devices
@@ -73,11 +62,12 @@ elif [ "$GRAPHICS_PLATFORM" == "amdpro" ]; then
                 --name ros_ml_container \
                 -e DISPLAY=$DISPLAY \
                 -v /tmp/.X11-unix:/tmp/.X11-unix \
+                -v "$PWD/src":/catkin_ws/src \
                 -v "$PWD/app":/app \
                 $DOCKER_RUN_ARGS \
                 --device=/dev/dri \
                 --device=/dev/kfd \
-                ros_ml_container:latest bash
+                ros_ml_container:latest /bin/bash -c "chmod +x /app/app.sh && (cd app ; ./app.sh)"
 elif [ "$GRAPHICS_PLATFORM" == "wsl2" ]; then
     # WSL2
     # run container in normal mode and pass through dri device for OpenGL and dxg Device for DirectX 12
@@ -90,9 +80,10 @@ elif [ "$GRAPHICS_PLATFORM" == "wsl2" ]; then
                 --device=/dev/dri:/dev/dri \
                 --device=/dev/dxg:/dev/dxg \
                 -v="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+                -v "$PWD/src":/catkin_ws/src \
                 -v "$PWD/app":/app \
                 $DOCKER_RUN_ARGS \
-                ros_ml_container:latest bash
+                ros_ml_container:latest /bin/bash -c "chmod +x /app/app.sh && (cd app ; ./app.sh)"
 else
     # OPENSOURCE and INTEL
     # run container in normal mode but pass through dri device
@@ -101,8 +92,9 @@ else
                 --name ros_ml_container \
                 -e DISPLAY=$DISPLAY \
                 -v /tmp/.X11-unix:/tmp/.X11-unix \
+                -v "$PWD/src":/catkin_ws/src \
                 -v "$PWD/app":/app \
                 $DOCKER_RUN_ARGS \
                 --device=/dev/dri \
-                ros_ml_container:latest bash
+                ros_ml_container:latest /bin/bash -c "chmod +x /app/app.sh && (cd app ; ./app.sh)"
 fi
