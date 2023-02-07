@@ -11,8 +11,12 @@ You can view the notebooks using four ways:
     * You can directly preview them here on GitHub
     * However, the notebooks will not be interactive
 
-2. Interactive Online Preview using Binder
-    * **Basics Notebook:** [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/SimonSchwaiger/lecture-notebooks/HEAD?labpath=app%2FNotebooks%2FBasics.ipynb)
+2. Interactive Online Session using [Binder](https://mybinder.org/)
+    * **Basics Notebook** 
+    
+        [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/SimonSchwaiger/lecture-notebooks/HEAD?labpath=app%2FNotebooks%2FBasics.ipynb)
+    * **Data Manipulation and Visualisation Notebook**
+    * **Python and ROS Notebook**
 
 3. Local Preview using VSCode
     * TODO
