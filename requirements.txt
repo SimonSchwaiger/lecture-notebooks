@@ -10,3 +10,4 @@ seaborn
 # visualisation stuff
 jupyter_dashboards
 jupyterlab-spellchecker
+ipywidgets
