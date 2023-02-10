@@ -7,7 +7,8 @@ matplotlib
 Pillow
 opencv-python
 seaborn
-# visualisation stuff
+# visualisation and ui stuff
 jupyter_dashboards
 jupyterlab-spellchecker
+jupyterlab-system-monitor
 ipywidgets
