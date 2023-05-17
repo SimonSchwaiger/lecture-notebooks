@@ -28,6 +28,6 @@ jobs:
         #cp -r ../../app/ .
         #cp ../../requirements.txt .
         mkdir src
-        echo "\n jupyterhub" >> requirements.txt
+        echo -e "\njupyterhub" >> requirements.txt
         docker build . --file .github/workflows/Dockerfile.binder --tag ghcr.io/simonschwaiger/lecture-notebooks:binder
         docker push ghcr.io/simonschwaiger/lecture-notebooks:binder
