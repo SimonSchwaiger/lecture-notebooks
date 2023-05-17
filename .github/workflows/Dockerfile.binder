@@ -126,5 +126,5 @@ RUN adduser --disabled-password \
     ${NB_USER}
 
 # Copy app and src folders over to the non-root user
-RUN cp /catkin_ws /home/${NB_USER}
+RUN cp -r /catkin_ws /home/${NB_USER}
 ADD app /home/${NB_USER}
