@@ -9,7 +9,7 @@ You can interact with the notebooks in a cloud instance without having to instal
 
 1. Interactive Online Session using [Binder](https://mybinder.org/)
     * Just click on the desired Notebook's Binder widget to launch an interactive online session containing the notebook in Jupyterlab.
-    * **Basics Notebook** 
+    * **Python Basic Syntax Notebook** 
     
         [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/SimonSchwaiger/lecture-notebooks/HEAD?labpath=app%2FNotebooks%2FBasics.ipynb)
     * **Data Manipulation and Visualisation Notebook**
