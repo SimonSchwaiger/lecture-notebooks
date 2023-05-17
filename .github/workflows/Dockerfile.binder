@@ -127,4 +127,12 @@ RUN adduser --disabled-password \
 
 # Copy app and src folders over to the non-root user
 RUN cp -r /catkin_ws /home/${NB_USER}
-ADD app /home/${NB_USER}
+COPY ./app /home/${NB_USER}
+
+# Create entrypoint
+RUN echo "source ~/myenv/bin/activate" >> /entrypoint.sh
+RUN echo "source /opt/ros/noetic/setup.bash" >> /entrypoint.sh
+RUN echo "${HOME}/catkin_ws/devel/setup.bash" >> /entrypoint.sh
+RUN echo 'exec "$@"' >> /entrypoint.sh
+
+ENTRYPOINT [ "/entrypoint.sh" ]

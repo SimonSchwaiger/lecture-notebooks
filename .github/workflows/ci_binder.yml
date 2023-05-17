@@ -25,10 +25,9 @@ jobs:
     
     - name: "Build the Docker image"
       run: |
-        #cp ../../src/ .
-        #cp ../../app/ .
+        #cp -r ../../app/ .
         #cp ../../requirements.txt .
-        mkdir ../../src
-        echo "jupyterhub" >> ../../requirements.txt
-        docker build ../.. --file .github/workflows/Dockerfile.binder --tag ghcr.io/simonschwaiger/lecture-notebooks:binder
+        mkdir src
+        echo "jupyterhub" >> requirements.txt
+        docker build . --file .github/workflows/Dockerfile.binder --tag ghcr.io/simonschwaiger/lecture-notebooks:binder
         docker push ghcr.io/simonschwaiger/lecture-notebooks:binder
