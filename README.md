@@ -1,33 +1,59 @@
-# lecture-notebooks
-This repository includes interactive Jupyter notebooks that complement my robotics programming courses.
+# Lecture Notebooks
 
-Jupyter notebooks are files that contain text, figures as well as executable code and code output. You can either view the notebooks statically or interactively, which allows you to run and modify code cells.
+This repository contains interactive Jupyter notebooks that complement my robotics programming courses. These notebooks include text, figures, executable code, and code output that can be viewed statically or run interactively.
 
-# Recommended Usage
+## Repository Structure
 
-You can interact with the notebooks in a cloud instance without having to install any software on your PC.
+```
+lecture-notebooks/
+├── Notebooks/
+│   ├── 0_Basics.ipynb                    # Python fundamentals
+│   ├── 1_ROS_Interfacing.ipynb           # ROS integration basics
+│   ├── 2_2D_Transformations_ROS.ipynb    # 2D transformations in ROS
+│   ├── 3_Data_Visualisation.ipynb        # Data visualization techniques
+│   ├── Code-Debugging-With-LLMs/         # LLM-assisted debugging exercise
+│   ├── Mobile-Robotics-Notebooks/        # Mobile robotics projects
+│   ├── Optimisation-Based-Robotics/      # Robot behaviour from optimisation
+│   └── util/                             # Utility scripts
+├── ROS Resources/                        # ROS 2 installation and setup guides (Coming Soon)
+└── requirements.txt                      # Python dependencies
+```
 
-1. Interactive Online Session using [Binder](https://mybinder.org/)
-    * Just click on the desired Notebook's Binder widget to launch an interactive online session containing the notebook in Jupyterlab.
-    * **Python Basic Syntax Notebook** 
-    
-        [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/SimonSchwaiger/lecture-notebooks/HEAD?labpath=app%2FNotebooks%2FBasics.ipynb)
-    * **Data Manipulation and Visualisation Notebook**
-    * **Python and ROS Notebook**
+## Getting Started
 
-# Alternative Usage Methods
+1. You can open all notebooks here on GitHub, but you will not be able to interact with them. For an interactive version, install the following on your machine
 
-Alternatively, you can view the notebooks using these other methods.
+    - Python 3.7+
+    - pip package manager
 
-2. Online Preview:
-    * You can directly preview them here on GitHub
-    * However, the notebooks will not be interactive
-    * The notebooks can be fuond in the [`app/Notebooks`](./app/Notebooks/) folder
+2. Then clone the repository or download each notebook of interest
+    ```bash
+    git clone https://github.com/SimonSchwaiger/lecture-notebooks.git
+    ```
 
-3. Local Preview using [Visual Studio Code](https://code.visualstudio.com/)
-    * Install Visual Studio Code and clone this repository
-    * Double-click on the desired notebook in the [`/app/Notebooks`](./app/Notebooks/) folder
+3. To execute all examples, install dependencies first.
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-4. Local Preview Using Docker and Jupyterlab
-    * Install Docker on your platform (Windows + WSL or natively on Linux) and run the [`buildandrun.sh`](./buildandrun.sh) script.
-    * Detailed install and run instructions for the docker-based environment are provided [here](https://github.com/SimonSchwaiger/ros-ml-container).
+## Viewing Notebooks
+
+We recommend [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/) for its ease of use and notebook-centric UI, however, any Notebook viewer works.
+
+### Interactive Viewing
+- **JupyterLab**: Launch with `jupyter lab` for full interactive experience
+- **Jupyter Notebook**: Use `jupyter notebook` for classic interface
+- **VS Code**: Open notebooks directly in VS Code with the Jupyter extension
+
+### Static Viewing
+- **GitHub**: View notebooks directly on GitHub (non-interactive)
+- **nbviewer**: Use [nbviewer.org](https://nbviewer.org/) to view notebooks from GitHub URLs
+- **VS Code**: Preview notebooks without running cells
+
+## Contributing
+
+Feel free to explore, modify, and run the notebooks. Each notebook is designed to be self-contained with clear explanations and practical examples. The main Notebooks (`./Notebooks`) are numbered and designed to be worked through in order.
+
+## Support
+
+For questions or issues, please refer to the individual notebook documentation or create an issue in this repository.
